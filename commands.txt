@@ -1,0 +1,13 @@
+#activate virtual environment
+
+ros2 launch um982_driver um982.launch.py \
+    ntrip_username:=timand054@gmail.com \
+    publish_odom:=true \
+    publish_tf:=true
+
+###
+###
+###
+ros2 launch um982_driver um982.launch.py \
+    serial_port:=/dev/ttyUSB1 \
+    ntrip_username:=timand054@gmail.com
