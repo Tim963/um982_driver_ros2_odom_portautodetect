@@ -1,0 +1,18 @@
+# udev rule for Unicorecomm UM982 GNSS receiver
+# Creates a symlink /dev/um982 pointing to the actual device
+#
+# Installation:
+#   sudo cp 99-um982.rules /etc/udev/rules.d/
+#   sudo udevadm control --reload-rules
+#   sudo udevadm trigger
+#
+# After unplugging and replugging the device, it will appear as /dev/um982
+
+# CH340 USB-Serial (common on UM982 boards)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="um982", MODE="0666"
+
+# CP210x USB-Serial (alternative chip)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="um982", MODE="0666"
+
+# FTDI USB-Serial (another alternative)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", SYMLINK+="um982", MODE="0666"

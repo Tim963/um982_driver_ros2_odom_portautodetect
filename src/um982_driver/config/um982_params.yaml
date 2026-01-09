@@ -1,0 +1,42 @@
+# UM982 Driver Configuration
+# Copy this file and customize for your setup
+
+um982_driver:
+  ros__parameters:
+    # Serial port settings
+    serial_port: "/dev/ttyUSB0"
+    baud_rate: 115200
+    frame_id: "gnss_link"
+    
+    # NTRIP settings for RTK corrections
+    ntrip_enabled: true
+    ntrip_host: "rtk2go.com"
+    ntrip_port: 2101
+    ntrip_mountpoint: "DEU00WOLF0"
+    ntrip_username: "your.email@example.com"  # Required for RTK2GO
+    ntrip_password: "none"
+    
+    # Heading correction (adjust in ROS2 without changing UM982 config)
+    heading_offset: 0.0          # Degrees to add to raw heading
+    baseline_length: 1.0         # Actual antenna separation in meters
+    antenna_orientation: "longitudinal"  # 'longitudinal' (fore-aft) or 'lateral' (side-by-side)
+    
+    # Heading offset examples:
+    # - Antennas in driving direction (PRIMARY front): 0.0
+    # - Antennas in driving direction (SECONDARY front): 180.0
+    # - Antennas perpendicular (PRIMARY left): 90.0
+    # - Antennas perpendicular (PRIMARY right): -90.0
+    
+    # Alternative: SAPOS Baden-Württemberg (requires registration)
+    # ntrip_host: "www.sapos-bw-ntrip.de"
+    # ntrip_port: 2101
+    # ntrip_mountpoint: "VRS_3_4G_BW"
+    # ntrip_username: "YOUR_SAPOS_USER"
+    # ntrip_password: "YOUR_SAPOS_PASSWORD"
+    
+    # Alternative: Centipede RTK (free, EU coverage)
+    # ntrip_host: "caster.centipede.fr"
+    # ntrip_port: 2101
+    # ntrip_mountpoint: "YOUR_NEAREST_MOUNTPOINT"
+    # ntrip_username: "centipede"
+    # ntrip_password: "centipede"
