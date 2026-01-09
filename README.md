@@ -7,4 +7,4 @@ python3 -m venv venv
 
 copy src into server into ros2_ws in home directory
   colcon build
-  source /install/setup.bash
+  source install/setup.bash
